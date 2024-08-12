@@ -28,13 +28,22 @@ document.addEventListener('DOMContentLoaded', function() {
         html += `<h1>${tabContent.title}</h1>`;
 
         if (tabId === 'about') {
-            html += `<p>${tabContent.content}</p>`;
+            html += `
+                <div class="about-content">
+                    <img src="${tabContent.photoUrl}" alt="My Photo" class="profile-photo">
+                    <p class="about-text">${tabContent.content}</p>
+                </div>
+                `;
         } else if (tabId === 'projects') {
-            html += '<ul>';
-            tabContent.items.forEach(item => {
-                html += `<li>${item}</li>`;
+            tabContent.items.forEach(project => {
+                html += `
+                    <div class="project">
+                        <h2>${project.name}</h2>
+                        <p>${project.description}</p>
+                        <a href="${project.link}" target="_blank">View Project</a>
+                    </div>
+                `;
             });
-            html += '</ul>';
         } else if (tabId === 'contact') {
             html += `<p>Email: ${tabContent.email}</p>`;
             html += `<p>Phone: ${tabContent.phone}</p>`;
